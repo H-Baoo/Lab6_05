@@ -12,10 +12,9 @@ app.use(express.json());
 app.use(cookieParser());
 
 // MongoDB connection
-mongoose.connect('mongodb://127.0.0.1:27017/sessionAuth', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect('mongodb://127.0.0.1:27017/sessionAuth')
+  .then(() => console.log("MongoDB connected"))
+  .catch(err => console.error("MongoDB connection error:", err));
 
 // Session setup (with cookies)
 app.use(
